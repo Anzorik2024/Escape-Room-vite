@@ -16,11 +16,26 @@ const defaultIcon = new Icon({
 });
 
 function Map({coordinates}: MapProps): JSX.Element {
-  console.log (coordinates);
 
-  return(
-    <div></div>
+
+  return (
+    <MapContainer
+      center={coordinates}
+      zoom={ZOOM}
+      style={{ height: '100%', width: '100%' }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+      />
+      <Marker
+        position={coordinates}
+        icon={defaultIcon}
+      >
+      </Marker>
+    </MapContainer>
   );
+
 }
 
 export default Map;
