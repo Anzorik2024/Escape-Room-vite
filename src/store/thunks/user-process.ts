@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios';
 import { ApiRoutes } from '../../const/api-routes';
 import { UserData, AuthData } from '../../types/state/state';
 import { saveToken } from '../../services/token';
-
+import { Dispatch, State } from '../../types/state/state';
 
 export const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
   const response = await api.post<UserData>(ApiRoutes.Login, body);
@@ -11,3 +11,8 @@ export const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInst
   return response.data;
 });
 
+
+export const checkAuthorization = createAsyncThunk<UserData, undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('checkAuthorization', async (_arg, {extra: api}) => {
+  const { data } = await api.get<UserData>(ApiRoutes.Login);
+  return data;
+});

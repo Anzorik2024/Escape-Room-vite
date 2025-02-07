@@ -11,12 +11,15 @@ import { AuthorizationStatus } from '../../const/authorization-status';
 import PrivateRoute from '../private-route/private-route';
 import ContactsPage from '../../pages/contacts-page/contacts-page';
 import Page404 from '../../pages/page404/page404';
+import { getToken } from '../../services/token';
+import { userActions } from '../../store/user-process/user-process';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 function App(): JSX.Element {
   const { questOffers } = useActionCreators(questAction);
+  const {checkAuthorization} = useActionCreators(userActions);
 
   const errorMessage = 'Не удалось загрузить данные!';
 
@@ -29,6 +32,13 @@ function App(): JSX.Element {
       });
 
   }, [ questOffers]);
+
+
+  const token = getToken();
+
+  useEffect(() => {
+    checkAuthorization();
+  }, [token, checkAuthorization]);
 
   return (
     <BrowserRouter>
