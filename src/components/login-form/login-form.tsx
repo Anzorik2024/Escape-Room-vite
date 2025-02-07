@@ -1,6 +1,11 @@
 import { FormEvent, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { loginAction, loginUser } from '../../store/thunks/user-process';
+import { useEffect } from 'react';
+//import { userActions } from '../../store/user-process/user-process';
+//import { useActionCreators } from '../../hooks/use-action-creators';
 
 //import { useAppDispatch, useAppSelector } from '../../hooks';
 //import { fetchReservationsAction, loginAction } from '../../store/api-actions';
@@ -39,7 +44,33 @@ type LocationState = {
   };
 }
 
+
+const postData = async (url = '', data = {}) => {
+  // Формируем запрос
+  const response = await fetch(url, {
+    // Метод, если не указывать, будет использоваться GET
+    method: 'POST',
+   // Заголовок запроса
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // Данные
+    body: JSON.stringify(data)
+  });
+  return response.json();
+}
+
 function LoginForm(): JSX.Element {
+  // useEffect(() => {
+  //   postData('https://grading.design.htmlacademy.pro/v0/escape-room/login', { email: "Oliver@mail.com",password: "password" }).then((data) => {
+  //     console.log(data);
+  //   });
+  // }, []);
+
+  const dispatch = useAppDispatch();
+
+//const {loginAction} = useActionCreators(userActions);
+
   const {
     register,
     formState: {errors, isValid},
@@ -74,6 +105,13 @@ function LoginForm(): JSX.Element {
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(emailRef.current && passwordRef.current) {
+      dispatch(loginUser({
+        email: emailRef.current?.value,
+        password: passwordRef.current?.value
+      }));
+    }
+
 
     // if(emailRef.current && passwordRef.current) {
     //   dispatch(loginAction({
@@ -146,7 +184,7 @@ function LoginForm(): JSX.Element {
           <button
             className="btn btn--accent btn--general login-form__submit"
             type="submit"
-            disabled={!isValid}
+            disabled={isValid}
           >
             {isLoginLoading ? LoginButtonText.Clicked : LoginButtonText.Default}
           </button>

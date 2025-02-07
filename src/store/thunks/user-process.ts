@@ -23,3 +23,12 @@ export const loginAction = createAsyncThunk<
       return data;
     }
   );
+
+export const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
+  const response = await api.post<UserData>(ApiRoutes.Login, body);
+  saveToken(response.data.token);
+  return response.data;
+});
+
+
+  
