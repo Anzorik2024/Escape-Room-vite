@@ -7,6 +7,7 @@ const selectQuestStatus = (state: State) => state.main.status;
 const getFilterOptionByType = (state: State) => state.filterProcess.typeOption;
 const getFilterOptionByLevel = (state: State) => state.filterProcess.levelOption;
 const getIsLoginLoading = (state: State) => state.userProcess.isLoginLoading;
+const getAuthorizationStatus = (state: State) => state.userProcess.authorizationStatus;
 
 export {
   selectMainQuest,
@@ -14,6 +15,7 @@ export {
   selectQuestStatus,
   getFilterOptionByType,
   getFilterOptionByLevel,
-  getIsLoginLoading
+  getIsLoginLoading,
+  getAuthorizationStatus
 };
 

@@ -13,11 +13,12 @@ import ContactsPage from '../../pages/contacts-page/contacts-page';
 import Page404 from '../../pages/page404/page404';
 import { getToken } from '../../services/token';
 import { userActions } from '../../store/user-process/user-process';
+import ProtectedRoute from '../protected-route/protected-rout';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function App(): JSX.Element {
+
   const { questOffers } = useActionCreators(questAction);
   const {checkAuthorization} = useActionCreators(userActions);
 
@@ -39,6 +40,7 @@ function App(): JSX.Element {
   useEffect(() => {
     checkAuthorization();
   }, [token, checkAuthorization]);
+
 
   return (
     <BrowserRouter>
@@ -66,7 +68,11 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Login}
-          element={<LoginPage/>}
+          element={
+            <ProtectedRoute onlyAuth>
+              <LoginPage/>
+            </ProtectedRoute>
+          }
         />
         <Route
           path= '*'
