@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../../const/authorization-status';
 import { UserProcess,UserData } from '../../types/state/state';
-import { loginAction,loginUser } from '../thunks/user-process';
+import { loginUser } from '../thunks/user-process';
 
 const initialState: UserProcess = {
   authorizationStatus: AuthorizationStatus.Unknown,
@@ -42,7 +42,7 @@ export const userProcess = createSlice({
 
 const userReducer = userProcess.reducer;
 const userActions = {
-  loginAction
+  loginUser
 };
 
 export {

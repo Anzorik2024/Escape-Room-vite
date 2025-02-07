@@ -1,79 +1,27 @@
 import { FormEvent, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from '../../hooks/use-app-dispatch';
-import { loginAction, loginUser } from '../../store/thunks/user-process';
-import { useEffect } from 'react';
-//import { userActions } from '../../store/user-process/user-process';
-//import { useActionCreators } from '../../hooks/use-action-creators';
+import { toast } from 'react-toastify';
 
-//import { useAppDispatch, useAppSelector } from '../../hooks';
-//import { fetchReservationsAction, loginAction } from '../../store/api-actions';
-//import { getIsLoginLoading } from '../../store/user-process/user-process-selectors';
-//import { displayError } from '../../store/actions';
+import { userActions } from '../../store/user-process/user-process';
+import { useActionCreators } from '../../hooks/use-action-creators';
 
-import { AppRoute } from '../../const/app-route';
-//import { LoginButtonText } from '../../const/login-button-text';
-//import { WarningMessage } from '../../const/warning-message';
-//import { ValidationMessage } from '../../const/validation-messages';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { getIsLoginLoading } from '../../store/selectors';
+import { ValidationMessage } from '../../const/validation-message';
+import { LoginButtonText } from '../../const/login-button-text';
 
-export enum LoginButtonText {
-  Default = 'Войти',
-  Clicked = 'Вход...'
-}
-
-
-export enum ValidationMessage {
-  RequiredDate = 'Выберите дату.',
-  RequiredField = 'Данные обязательные для заполнения.',
-  ValidateUserName = 'Ввeдите корректное имя пользователя.',
-  ValidateUserNameLength = 'Введите имя пользователя, состоящее не менее, чем из 1 символа и не более, чем из 15.',
-  ValidatePhone = 'Ввeдите номер телефона в формате +7 (000) 000-00-00.',
-  ValidateParticipantsMin = 'Количество участников меньше допустимого количества для даного квеста.',
-  ValidateParticipantsMax = 'Количество участников больше допустимого количества для даного квеста.',
-  ValidateEmail = 'Ввeдите корректный email.',
-  ValidatePassword = 'Ввeдите пароль, состоящий из букв и цифр не короче 3 символов.', //в ТЗ неправильные данные, сервер требует 3 символа
-  }
 
 const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{3,}$/;
 const loginRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-type LocationState = {
-  from: {
-    pathname: string;
-  };
-}
-
-
-const postData = async (url = '', data = {}) => {
-  // Формируем запрос
-  const response = await fetch(url, {
-    // Метод, если не указывать, будет использоваться GET
-    method: 'POST',
-   // Заголовок запроса
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // Данные
-    body: JSON.stringify(data)
-  });
-  return response.json();
-}
 
 function LoginForm(): JSX.Element {
-  // useEffect(() => {
-  //   postData('https://grading.design.htmlacademy.pro/v0/escape-room/login', { email: "Oliver@mail.com",password: "password" }).then((data) => {
-  //     console.log(data);
-  //   });
-  // }, []);
 
-  const dispatch = useAppDispatch();
-
-//const {loginAction} = useActionCreators(userActions);
+  const {loginUser} = useActionCreators(userActions);
 
   const {
     register,
-    formState: {errors, isValid},
+    formState: {errors},
   } = useForm({
     mode: 'onBlur'
   });
@@ -96,45 +44,19 @@ function LoginForm(): JSX.Element {
     },
   });
 
-  //const isLoginLoading = useAppSelector(getIsLoginLoading);
-  const isLoginLoading = true;
-
-  const navigate = useNavigate();
-  const location = useLocation();
- // const dispatch = useAppDispatch();
+  const isLoginLoading = useAppSelector(getIsLoginLoading);
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(emailRef.current && passwordRef.current) {
-      dispatch(loginUser({
-        email: emailRef.current?.value,
-        password: passwordRef.current?.value
-      }));
+      loginUser({
+        email: `${emailRef.current.value}`,
+        password: `${ passwordRef.current.value}`
+      }).unwrap()
+        .catch(() => {
+          toast.error('Не удалось завершить зарегистрацию');
+        });
     }
-
-
-    // if(emailRef.current && passwordRef.current) {
-    //   dispatch(loginAction({
-    //     email: emailRef.current?.value,
-    //     password: passwordRef.current?.value
-    //   }))
-    //     .unwrap().then(
-    //       () => {
-    //         if((location.state as LocationState)?.from) {
-    //           const { pathname } = (location.state as LocationState).from;
-
-    //           navigate(pathname);
-
-    //           //dispatch(fetchReservationsAction());
-    //         } else {
-
-    //           navigate(AppRoute.MainPage);
-    //         }
-    //       },
-    //       () => {
-    //         //dispatch(displayError(WarningMessage.SendError));
-    //       }
-    //     );
   };
 
   return(
@@ -184,7 +106,7 @@ function LoginForm(): JSX.Element {
           <button
             className="btn btn--accent btn--general login-form__submit"
             type="submit"
-            disabled={isValid}
+            disabled={isLoginLoading}
           >
             {isLoginLoading ? LoginButtonText.Clicked : LoginButtonText.Default}
           </button>
