@@ -4,13 +4,6 @@ import { RequestStatus } from '../../const';
 import { QuestPreview } from '../../types/quest/quest-types';
 import { QuestAllSample } from '../../types/quest/quest';
 
-// type InitialState = {
-//   quest:[];
-//   isLoading: boolean;
-//   questOne: QuestAllSample | null;
-//   status: RequestStatus;
-// };
-
 type QuestsProcess = {
   quest: QuestPreview[];
   isLoading: boolean;
