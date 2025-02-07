@@ -18,4 +18,16 @@ export type QuestPreview = Pick<Quest, 'id'|'title'|'previewImg'|'previewImgWebp
 
 export type Coordinates = [number, number];
 
+export type QuestInfo = {
+  id: number;
+  locations: Location[];
+  slots: {
+    today: TimeSlot[];
+    tomorrow: TimeSlot[];
+  };
+}
 
+type TimeSlot = {
+  time: string;
+  isAvailable: boolean;
+}

@@ -15,7 +15,7 @@ number,
 }
 >('booking/fetchQuestBookingInfoById',
   async (id, { extra: api}) => {
-    const { data } = await api.get<Quest>(`${ApiRoutes.Quests}/${id}`);
+    const { data } = await api.get<Quest>(`${ApiRoutes.Quests}/${id}/booking`);
 
     return data;
   }
