@@ -30,3 +30,17 @@ export const questsProcess = createSlice({
       });
   }
 });
+
+
+const questsReducer = questsProcess.reducer;
+
+const questsActions = {
+  fetchQuestByIdAction,
+  fetchQuestPreviewsAction
+};
+
+export {
+  questsReducer,
+  questsActions
+};
+
