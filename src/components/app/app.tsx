@@ -6,30 +6,33 @@ import { AppRoute } from '../../const/app-route';
 import Main from '../../pages/main/main';
 import QuestPage from '../../pages/quest-page/quest-page';
 import BookingPage from '../../pages/booking-page/booking-page';
+import LoginPage from '../../pages/login-page/login-page';
 import { AuthorizationStatus } from '../../const/authorization-status';
 import PrivateRoute from '../private-route/private-route';
 import ContactsPage from '../../pages/contacts-page/contacts-page';
 import Page404 from '../../pages/page404/page404';
-//import { ToastContainer} from 'react-toastify';
-//import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App(): JSX.Element {
   const { questOffers } = useActionCreators(questAction);
+
+  const errorMessage = 'Не удалось загрузить данные!';
 
 
   useEffect(() => {
     questOffers()
       .unwrap()
       .catch(() => {
-        //toast.error();
+        toast.error(errorMessage);
       });
 
   }, [ questOffers]);
 
   return (
     <BrowserRouter>
-
+      <ToastContainer />
       <Routes>
         <Route
           path={AppRoute.MainPage}
@@ -50,6 +53,10 @@ function App(): JSX.Element {
         <Route
           path={AppRoute.Contacts}
           element={<ContactsPage/>}
+        />
+        <Route
+          path={AppRoute.Login}
+          element={<LoginPage/>}
         />
         <Route
           path= '*'

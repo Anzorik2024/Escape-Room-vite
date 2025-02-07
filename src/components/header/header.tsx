@@ -27,7 +27,7 @@ function Header(): JSX.Element {
           </ul>
         </nav>
         <div className="header__side-nav">
-          <a className="btn btn--accent header__side-item" href="#">Выйти</a>
+          <Link className="btn btn--accent header__side-item" to={AppRoute.Login}>Вооойти</Link>
           <a className="link header__side-item header__phone-link" href="tel:88003335599">8 (000) 111-11-11</a>
         </div>
       </div>
