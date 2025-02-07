@@ -7,8 +7,6 @@ import Main from '../../pages/main/main';
 import QuestPage from '../../pages/quest-page/quest-page';
 import BookingPage from '../../pages/booking-page/booking-page';
 import LoginPage from '../../pages/login-page/login-page';
-import { AuthorizationStatus } from '../../const/authorization-status';
-import PrivateRoute from '../private-route/private-route';
 import ContactsPage from '../../pages/contacts-page/contacts-page';
 import Page404 from '../../pages/page404/page404';
 import { getToken } from '../../services/token';

@@ -1,6 +1,5 @@
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectMainQuest } from '../../store/selectors';
-import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import PageTitle from '../../components/page-title/page-title';
 import FormFilter from '../../components/form-filter/form-filter';
@@ -9,6 +8,7 @@ import { getFilterOptionByType, getFilterOptionByLevel} from '../../store/select
 import EmptyPlug from '../../components/empty-plug/empty-plug';
 import { EmptyPlugText } from '../../const/empty-plug-text';
 import QuestCard from '../../components/quest-card/quest-card';
+import Header from '../../components/header/header';
 
 function Main() : JSX.Element {
   const mainQuests = useAppSelector(selectMainQuest);
