@@ -11,7 +11,7 @@ import { ValidationMessage } from '../../const/validation-message';
 import { LoginButtonText } from '../../const/login-button-text';
 
 
-const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{3,}$/;
+const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{3,15}$/;
 const loginRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 
