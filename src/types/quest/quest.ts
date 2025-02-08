@@ -1,10 +1,13 @@
-enum LevelQuest {
+import { QuestType } from '../../const/quest-type';
+import { QuestLevelRaw } from '../../const/quest-level';
+
+export enum LevelQuest {
   Easy = 'easy',
   Medium = 'medium',
   Hard = 'hard'
 }
 
-enum TypeQuest {
+export enum TypeQuest {
   Adventures = 'adventures',
   Horror = 'horror',
   Mystic = 'mystic',
@@ -12,13 +15,13 @@ enum TypeQuest {
   SciFi = 'sci-fi',
 }
 
-type LevelTypeSample = {
+export type LevelTypeSample = {
   easy: string;
   hard: string;
   medium: string;
 }
 
-type typeQuestSample = {
+export type typeQuestSample = {
   adventures: string;
   horror: string;
   mystic: string;
@@ -26,7 +29,7 @@ type typeQuestSample = {
   sciFi: string;
 }
 
-type QuestSample = {
+export type QuestSample = {
   id: string;
   title: string;
   previewImg: string;
@@ -37,15 +40,54 @@ type QuestSample = {
 };
 
 
- type QuestAllSample = QuestSample & {
+export type QuestAllSample = QuestSample & {
    description: string;
    coverImg: string;
    coverImgWebp: string;
   };
 
-  type typeQuestMainSample = typeQuestSample & {
+export type typeQuestMainSample = typeQuestSample & {
     all: string;
   }
 
-export type {QuestSample,QuestAllSample,LevelTypeSample,typeQuestSample, typeQuestMainSample};
+export type Quest = {
+  id: number;
+  title: string;
+  previewImg: string;
+  previewImgWebp: string;
+  level: QuestLevelRaw;
+  type: QuestType;
+  peopleMinMax: [number, number];
+  description: string;
+  coverImg: string;
+  coverImgWebp: string;
+  }
+
+export type QuestPreview = Pick<Quest, 'id'|'title'|'previewImg'|'previewImgWebp'|'level'|'peopleMinMax'|'type'>;
+
+export type Coordinates = [number, number];
+
+export type QuestInfo = {
+  id: number;
+  locations: Location[];
+  slots: {
+    today: TimeSlot[];
+    tomorrow: TimeSlot[];
+  };
+}
+
+type TimeSlot = {
+  time: string;
+  isAvailable: boolean;
+}
+
+
+export type Location = {
+  id: number;
+  address: string;
+  coords: Coordinates;
+}
+
+
+//export type {QuestSample,QuestAllSample,LevelTypeSample,typeQuestSample, typeQuestMainSample, };
 
