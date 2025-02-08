@@ -14,9 +14,6 @@ import { WarningMessage } from '../../const/warning-message';
 import { toast } from 'react-toastify';
 import { NAME_MAX_LENGTH, NAME_MIN_LENGTH, ValidationMessage } from '../../const/validation-message';
 
-//import { useEffect } from 'react';
-
-
 type bookingFormProps = {
   quest: QuestInfo;
   peopleMinMax: [number,number];
