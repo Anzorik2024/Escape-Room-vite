@@ -25,4 +25,10 @@ export type Reservation = {
     quest: QuestPreview;
 }
 
+export type ReservationProcess = {
+  reservations: ReservationsData;
+  isReservationsLoading: boolean;
+}
+
+
 export type ReservationsData = Reservation[];

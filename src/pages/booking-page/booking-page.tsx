@@ -10,12 +10,12 @@ import Spiner from '../../components/spiner/spiner';
 import Header from '../../components/header/header';
 import BackgroundPictureEmpty from '../../components/background-picture-empty/background-picture-empty';
 import BookingMap from '../../components/booking-map/booking-map';
+import BookingForm from '../../components/booking-form/booking-form';
 
 
 function BookingPage():JSX.Element {
 
   const questOne = useAppSelector(selectQuestOne);
-  //const {peopleMinMax} = selectedQuest;
   const [bookedQuest, setBookedQuest] = useState<QuestInfo|null>(null);
 
 
@@ -56,6 +56,7 @@ function BookingPage():JSX.Element {
             </p>
           </div>
           <BookingMap quest={bookedQuest}/>
+          {questOne ? <BookingForm quest={bookedQuest} peopleMinMax={questOne.peopleMinMax} /> : ''}
         </div>
 
       </main>

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState, memo } from 'react';
+import { ChangeEvent, FormEvent, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ import { AppRoute } from '../../const/app-route';
 import { WarningMessage } from '../../const/warning-message';
 import { toast } from 'react-toastify';
 import { NAME_MAX_LENGTH, NAME_MIN_LENGTH, ValidationMessage } from '../../const/validation-message';
+
+//import { useEffect } from 'react';
 
 
 type bookingFormProps = {
@@ -35,6 +37,7 @@ const PHONE_REGEX = /^((\+7)[ ])(\(\d{3}\)[ ])\d{3}[-]\d{2}[-]\d{2}$/;
 const USER_NAME_REGEX = /^[А-Яа-яЁёA-Za-z]{1,}$/;
 
 function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
+
   const { slots, id } = quest;
   const { today, tomorrow } = slots;
   const [peopleMin, peopleMax] = peopleMinMax;
@@ -80,10 +83,9 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-
     dispatch(sendBookingInfoAction({
       ...formData,
-      peopleCount: +formData.peopleCount,
+      peopleCount:Number(formData.peopleCount),
       locationId: selectedLocation.id,
       questId: id
     })).unwrap().then(
@@ -93,9 +95,8 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
         navigate(AppRoute.MyQuests);
 
         dispatch(fetchReservationsAction());
-      }
-      // () =>  сделать catch и показать ошибку () => dispatch(displayError(WarningMessage.SendError))
-    ).catch(() => {
+      }).catch((data) => {
+      //console.log(data);
       toast.error(WarningMessage.SendError);
     });
   };
@@ -241,7 +242,6 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
       <button
         className="btn btn--accent btn--cta booking-form__submit"
         type="submit"
-        disabled={ !isValid }
       >
             Забронировать
       </button>
@@ -268,4 +268,4 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
   );
 }
 
-export default memo(BookingForm);
+export default BookingForm;

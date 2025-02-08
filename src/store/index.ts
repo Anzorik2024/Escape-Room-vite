@@ -5,6 +5,7 @@ import { filterProcessReducer } from './filter-process/filter-process';
 import { userReducer } from './user-process/user-process';
 import { questsReducer } from './quests-process/quests-process';
 import { bookingProcessReducer } from './booking-process/booking-process';
+import { reservationProcessReducer } from './reservation-process/reservation-process';
 
 
 export const api = createAPI();
@@ -14,7 +15,8 @@ export const store = configureStore({
     filterProcess: filterProcessReducer,
     userProcess: userReducer,
     questsProcess: questsReducer,
-    bookingProcess: bookingProcessReducer
+    bookingProcess: bookingProcessReducer,
+    reservationProcess: reservationProcessReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

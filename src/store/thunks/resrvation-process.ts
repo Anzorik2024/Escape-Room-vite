@@ -36,3 +36,12 @@ export const sendBookingInfoAction = createAsyncThunk<
       await api.post<BookingInfo>(`${ApiRoutes.Quests}/${ReservationInfo.questId}/booking`, ReservationInfo);
     }
   );
+
+//   interface PostCommentProps {
+//     offerId: number;
+//   }
+
+// export const postCommentBook = createAsyncThunk<void, BookingInfo, {extra: AxiosInstance}>('comments/post', async ({ body, offerId }, { extra : api}) => {
+//   const response = await api.post<BookingInfo>(`${ApiRoutes.Quests}/${offerId}/booking`, body);
+//   return response.data;
+// });
