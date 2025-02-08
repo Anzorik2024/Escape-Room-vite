@@ -6,7 +6,7 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { fetchReservationsAction, sendBookingInfoAction } from '../../store/thunks/resrvation-process';
 import { getSelectedLocation } from '../../store/selectors';
-import { QuestInfo } from '../../types/quest/quest-types';
+import { QuestInfo } from '../../types/quest/quest';
 import { BookingInfo } from '../../types/reservation/reservation-types';
 import { DateRaw } from '../../const/date';
 import { AppRoute } from '../../const/app-route';

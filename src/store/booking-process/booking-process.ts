@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Location, QuestInfo } from '../../types/quest/quest-types';
+import { Location, QuestInfo } from '../../types/quest/quest';
 
 
  type BookingProcess = {

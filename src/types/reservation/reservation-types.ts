@@ -1,6 +1,6 @@
 import { DateRaw } from '../../const/date';
-import { QuestPreview } from '../quest/quest-types';
-import { Location } from '../quest/quest-types';
+import { QuestPreview } from '../quest/quest';
+import { Location } from '../quest/quest';
 
 export type BookingInfo = {
 date: DateRaw;

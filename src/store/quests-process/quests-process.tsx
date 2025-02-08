@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { QuestInfo } from '../../types/quest/quest-types';
+import { QuestInfo } from '../../types/quest/quest';
 import { QuestsProcess } from '../../types/state/state';
 import { fetchQuestByIdAction, fetchQuestPreviewsAction } from '../thunks/quests-process';
 

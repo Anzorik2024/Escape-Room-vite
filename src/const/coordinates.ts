@@ -1,4 +1,4 @@
-import { Coordinates } from '../types/quest/quest-types';
+import { Coordinates } from '../types/quest/quest';
 
 export const OFFICE_COORDINATES = [59.96838, 30.31742] as Coordinates;
 

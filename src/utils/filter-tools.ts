@@ -1,4 +1,4 @@
-import { QuestPreview } from '../types/quest/quest-types';
+import { QuestPreview } from '../types/quest/quest';
 import { QuestLevelRaw, QUEST_BY_LEVEL_DEFAULT } from '../const/quest-level';
 import { QuestType, QUEST_BY_TYPE_DEFAULT } from '../const/quest-type';
 

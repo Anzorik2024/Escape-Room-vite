@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { questOffers, fetchQuest } from '../thunks/main';
 import { RequestStatus } from '../../const/request-status';
-import { QuestPreview } from '../../types/quest/quest-types';
+import { QuestPreview } from '../../types/quest/quest';
 import { QuestAllSample } from '../../types/quest/quest';
 
 type QuestsProcess = {

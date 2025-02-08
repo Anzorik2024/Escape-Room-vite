@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectQuestOne } from '../../store/selectors';
-import { QuestInfo} from '../../types/quest/quest-types';
+import { QuestInfo} from '../../types/quest/quest';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { questsActions } from '../../store/quests-process/quests-process';
 import { toast } from 'react-toastify';

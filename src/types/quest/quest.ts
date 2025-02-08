@@ -50,19 +50,6 @@ export type typeQuestMainSample = typeQuestSample & {
     all: string;
   }
 
-export type Quest = {
-  id: number;
-  title: string;
-  previewImg: string;
-  previewImgWebp: string;
-  level: QuestLevelRaw;
-  type: QuestType;
-  peopleMinMax: [number, number];
-  description: string;
-  coverImg: string;
-  coverImgWebp: string;
-  }
-
 export type QuestPreview = Pick<Quest, 'id'|'title'|'previewImg'|'previewImgWebp'|'level'|'peopleMinMax'|'type'>;
 
 export type Coordinates = [number, number];
@@ -87,3 +74,17 @@ export type Location = {
   address: string;
   coords: Coordinates;
 }
+
+export type Quest = {
+  id: number;
+  title: string;
+  previewImg: string;
+  previewImgWebp: string;
+  level: QuestLevelRaw;
+  type: QuestType;
+  peopleMinMax: [number, number];
+  description: string;
+  coverImg: string;
+  coverImgWebp: string;
+  }
+

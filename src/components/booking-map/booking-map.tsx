@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { Location, QuestInfo } from '../../types/quest/quest-types';
+import { Location, QuestInfo } from '../../types/quest/quest';
 
 import { IconrUrl, IconSize } from '../../const/icon-url';
 import { CENTER_COORDINATES, ZOOM } from '../../const/coordinates';

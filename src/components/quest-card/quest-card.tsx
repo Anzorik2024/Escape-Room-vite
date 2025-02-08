@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { QuestPreview } from '../../types/quest/quest-types';
+import { QuestPreview } from '../../types/quest/quest';
 import { AppRoute } from '../../const/app-route';
 import { capitalizeFirstLetter, translateLevel } from '../../utils/format';
 

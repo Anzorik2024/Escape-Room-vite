@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import { IconSize, IconrUrl } from '../../const/icon-url';
-import { Coordinates } from '../../types/quest/quest-types';
+import { Coordinates } from '../../types/quest/quest';
 import { ZOOM } from '../../const/coordinates';
 
 type MapProps = {

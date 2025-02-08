@@ -1,4 +1,4 @@
-import { QuestInfo, QuestPreview } from '../../types/quest/quest-types';
+import { QuestInfo, QuestPreview } from '../../types/quest/quest';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { Dispatch, State } from '../../types/state/state';

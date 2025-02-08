@@ -4,7 +4,7 @@ import { State, Dispatch } from '../../types/state/state';
 import { ApiRoutes } from '../../const/api-routes';
 
 import { QuestAllSample } from '../../types/quest/quest';
-import { QuestPreview } from '../../types/quest/quest-types';
+import { QuestPreview } from '../../types/quest/quest';
 
 
 const questOffers = createAsyncThunk<QuestPreview[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
