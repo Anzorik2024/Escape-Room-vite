@@ -12,7 +12,6 @@ import BackgroundPictureEmpty from '../../components/background-picture-empty/ba
 import BookingMap from '../../components/booking-map/booking-map';
 import BookingForm from '../../components/booking-form/booking-form';
 
-
 function BookingPage():JSX.Element {
 
   const questOne = useAppSelector(selectQuestOne);

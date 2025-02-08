@@ -48,7 +48,7 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
 
   const {
     register,
-    formState: {errors, isValid},
+    formState: {errors},
     reset
   } = useForm({
     mode: 'onBlur'
@@ -83,22 +83,27 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(sendBookingInfoAction({
-      ...formData,
-      peopleCount:Number(formData.peopleCount),
-      locationId: selectedLocation.id,
-      questId: id
-    })).unwrap().then(
-      () => {
-        reset();
+    if(!selectedLocation.id) {
+      toast.error('Пожалуйста выберите локацию на карте!');
+    } else {
+      dispatch(sendBookingInfoAction({
+        ...formData,
+        peopleCount:Number(formData.peopleCount),
+        locationId: Number(selectedLocation.id),
+        questId: id
+      })).unwrap().then(
+        () => {
+          reset();
 
-        navigate(AppRoute.MyQuests);
+          navigate(AppRoute.MainPage);
 
-        dispatch(fetchReservationsAction());
-      }).catch((data) => {
-      //console.log(data);
-      toast.error(WarningMessage.SendError);
-    });
+          dispatch(fetchReservationsAction());
+        }).catch(() => {
+        toast.error(WarningMessage.SendError);
+      });
+    }
+
+
   };
 
   return (
