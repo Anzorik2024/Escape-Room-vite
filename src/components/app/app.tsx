@@ -21,14 +21,11 @@ function App(): JSX.Element {
   const { questOffers } = useActionCreators(questAction);
   const {checkAuthorization} = useActionCreators(userActions);
 
-  const errorMessage = 'Не удалось загрузить данные!';
-
-
   useEffect(() => {
     questOffers()
       .unwrap()
       .catch(() => {
-        toast.error(errorMessage);
+        toast.error('Не удалось загрузить данные!');
       });
 
   }, [ questOffers]);

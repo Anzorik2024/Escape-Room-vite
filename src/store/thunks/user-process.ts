@@ -18,21 +18,6 @@ export const checkAuthorization = createAsyncThunk<UserData, undefined, {dispatc
   return data;
 });
 
-// export const logoutAction = createAsyncThunk<
-//     void,
-//     undefined,
-//   {
-//     dispatch: AppDispatch;
-//     state: State;
-//     extra: AxiosInstance;
-//   }
-//   >('user/logout',
-//     async (_arg, { extra: api}) => {
-//       await api.delete(ApiRoutes.Logout);
-//       dropToken();
-//     }
-//   );
-
 export const logout = createAsyncThunk<unknown, undefined, { extra: AxiosInstance }>
 ('user/logout', async (_, { extra: api }) => {
   await api.delete(ApiRoutes.Logout);
