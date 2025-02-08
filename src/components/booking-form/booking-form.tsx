@@ -4,20 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { fetchReservationsAction, sendBookingInfoAction } from '../../store/thunks/resrvation-process';
+import { getSelectedLocation } from '../../store/selectors';
+import { QuestInfo } from '../../types/quest/quest-types';
+import { BookingInfo } from '../../types/reservation/reservation-types';
+import { DateRaw } from '../../const/date';
+import { AppRoute } from '../../const/app-route';
+import { WarningMessage } from '../../const/warning-message';
+import { toast } from 'react-toastify';
+import { NAME_MAX_LENGTH, NAME_MIN_LENGTH, ValidationMessage } from '../../const/validation-message';
 
-// import { fetchReservationsAction, sendBookingInfoAction } from '../../store/api-actions';
-// import { displayError } from '../../store/actions';
-// import { getSelectedLocation } from '../../store/booking-process/booking-process-selectors';
-
-
-
-// import { QuestInfo } from '../../@types/quest-types';
-// import { BookingInfo } from '../../@types/reservation-types';
-
-// import { DateRaw } from '../../const/date';
-// import { AppRoute } from '../../const/app-route';
-// import { WarningMessage } from '../../const/warning-message';
-// import { NAME_MAX_LENGTH, NAME_MIN_LENGTH, ValidationMessage } from '../../const/validation-messages';
 
 type bookingFormProps = {
   quest: QuestInfo;
@@ -97,9 +93,11 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
         navigate(AppRoute.MyQuests);
 
         dispatch(fetchReservationsAction());
-      },
-      () => dispatch(displayError(WarningMessage.SendError))
-    );
+      }
+      // () =>  сделать catch и показать ошибку () => dispatch(displayError(WarningMessage.SendError))
+    ).catch(() => {
+      toast.error(WarningMessage.SendError);
+    });
   };
 
   return (

@@ -10,3 +10,5 @@ export enum ValidationMessage {
   ValidatePassword = 'Ввeдите пароль, состоящий из цифр и латинскиx букв, не короче 3 символов длиннее 15 символов.',
   }
 
+export const NAME_MIN_LENGTH = 1;
+export const NAME_MAX_LENGTH = 15;
