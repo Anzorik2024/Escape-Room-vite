@@ -6,6 +6,7 @@ import { Quest } from '../../types/quest/quest-types';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { questsActions } from '../../store/quests-process/quests-process';
 import { toast } from 'react-toastify';
+import Spiner from '../../components/spiner/spiner';
 
 
 function BookingPage():JSX.Element {
@@ -32,7 +33,10 @@ function BookingPage():JSX.Element {
 
   }, [ questId,fetchQuestByIdAction]);
 
-  console.log(bookedQuest);
+  //console.log(bookedQuest);
+  if (!bookedQuest) {
+    return <Spiner />;
+  }
 
   return (
     <div></div>
