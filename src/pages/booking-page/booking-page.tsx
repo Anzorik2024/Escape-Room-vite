@@ -31,7 +31,7 @@ function BookingPage():JSX.Element {
         },
       )
       .catch(() => {
-        toast.error('Придумать сообщение');
+        toast.error('Не удалось загрузить квест для бронирования!');
       });
 
   }, [ questId,fetchQuestByIdAction]);

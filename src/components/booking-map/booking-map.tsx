@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -29,7 +29,11 @@ type bookingMapProps = {
 function BookingMap({quest}: bookingMapProps):JSX.Element {
   const { locations } = quest;
 
-  const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);// locations[0]
+
+  useEffect(() => {
+    setSelectedLocation(locations[0]);
+  },[locations]);
 
   const dispatch = useAppDispatch();
 

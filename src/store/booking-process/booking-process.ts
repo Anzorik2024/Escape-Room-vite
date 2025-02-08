@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Location, QuestInfo } from '../../types/quest/quest-types';
 
 
-// import { fetchQuestBookingInfoByIdAction } from '../api-actions';
-
  type BookingProcess = {
   bookedQuest: QuestInfo;
   selectedLocation: Location;
@@ -24,12 +22,6 @@ const bookingProcess = createSlice({
       state.selectedLocation = action.payload;
     }
   },
-  // extraReducers(builder){
-  //   builder
-  //     .addCase(fetchQuestBookingInfoByIdAction.fulfilled, (state, action) =>{
-  //       state.bookedQuest = action.payload;
-  //     });
-  // }
 });
 
 const bookingProcessReducer = bookingProcess.reducer;
