@@ -29,7 +29,7 @@ type bookingMapProps = {
 function BookingMap({quest}: bookingMapProps):JSX.Element {
   const { locations } = quest;
 
-  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);// locations[0]
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
   useEffect(() => {
     setSelectedLocation(locations[0]);

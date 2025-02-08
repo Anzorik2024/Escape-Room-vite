@@ -1,4 +1,3 @@
-
 import { QuestLevel, QuestLevelRaw } from '../const/quest-level';
 import { QuestType, QuestTypeTranslate } from '../const/quest-type';
 import { DateRaw, Date } from '../const/date';
