@@ -8,8 +8,7 @@ import { AppRoute } from '../../const/app-route';
 import { capitalizeFirstLetter, translateLevel, translateDate } from '../../utils/format';
 import { toast } from 'react-toastify';
 import { WarningMessage } from '../../const/warning-message';
-// import { WarningMessage } from '../../const/warning-message';
-// import { capitalizeFirstLetter, translateDate, translateLevel } from '../../utiles/format';
+
 
 type ReservationCardProps = {
   reservation: Reservation;
