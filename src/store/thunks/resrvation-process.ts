@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { Dispatch, State } from '../../types/state/state';
 import { ApiRoutes } from '../../const/api-routes';
-import { ReservationsData, BookingInfo } from '../../types/reservation/reservation-types';
+import { ReservationsData, BookingInfo } from '../../types/reservation/reservation';
 
 
 export const fetchReservationsAction = createAsyncThunk<

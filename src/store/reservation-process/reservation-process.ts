@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchReservationsAction } from '../thunks/resrvation-process';
-import { ReservationProcess } from '../../types/reservation/reservation-types';
+import { ReservationProcess } from '../../types/reservation/reservation';
 import { deleteReservationAction } from '../thunks/resrvation-process';
 
 

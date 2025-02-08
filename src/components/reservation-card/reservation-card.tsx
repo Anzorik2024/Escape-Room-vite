@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 
 import { deleteReservationAction, fetchReservationsAction } from '../../store/thunks/resrvation-process';
-import { Reservation } from '../../types/reservation/reservation-types';
+import { Reservation } from '../../types/reservation/reservation';
 import { AppRoute } from '../../const/app-route';
 
 import { capitalizeFirstLetter, translateLevel, translateDate } from '../../utils/format';
