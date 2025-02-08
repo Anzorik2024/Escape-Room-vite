@@ -1,13 +1,5 @@
 import { LevelTypeSample,typeQuestSample, typeQuestMainSample } from './types/quest/quest';
 
-enum ApiRoute {
-  Quest = '/v1/escape-room/quest',
-  // Login = '/login',
-  // Favorites = '/favorite',
-  // Comments = '/comments',
-  // Logout = '/logout',
-}
-
 const levelType : LevelTypeSample = {
   easy: 'легкий',
   hard: 'сложный',
@@ -45,4 +37,4 @@ const enum RequestStatus { Idle, Loading, Success, Failed }
 
 const valueTypeQuest = ['all', 'adventures','horror', 'mystic', 'detective','sciFi'] as const;
 
-export {ApiRoute, levelType,RequestStatus, typeQuest, typeQuestMain, typeQuestMainImage,valueTypeQuest};
+export { levelType,RequestStatus, typeQuest, typeQuestMain, typeQuestMainImage,valueTypeQuest};

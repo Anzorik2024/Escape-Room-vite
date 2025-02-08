@@ -10,6 +10,7 @@ import Page404 from '../page404/page404';
 import Header from '../../components/header/header';
 import { translateType, translateLevel } from '../../utils/format';
 import { AppRoute } from '../../const/app-route';
+import { toast } from 'react-toastify';
 
 function QuestPage():JSX.Element {
   const {fetchQuest} = useActionCreators(questAction);
@@ -23,7 +24,7 @@ function QuestPage():JSX.Element {
     fetchQuest(id as string)
       .unwrap()
       .catch(() => {
-        // toast.error(ToastifyErrorMessage.UploadOffer);
+        toast.error('Не удалось загрузить информацию о квесте');
       });
 
   }, [id,fetchQuest]);
@@ -54,7 +55,7 @@ function QuestPage():JSX.Element {
 
 
   return(
-    <>
+    <div className="wrapper">
       <Header/>
       <main className="decorated-page quest-page">
         <div className="decorated-page__decor" aria-hidden="true">
@@ -103,7 +104,7 @@ function QuestPage():JSX.Element {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 

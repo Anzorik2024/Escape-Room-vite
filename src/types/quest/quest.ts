@@ -87,7 +87,3 @@ export type Location = {
   address: string;
   coords: Coordinates;
 }
-
-
-//export type {QuestSample,QuestAllSample,LevelTypeSample,typeQuestSample, typeQuestMainSample, };
-
