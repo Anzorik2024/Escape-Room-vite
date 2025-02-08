@@ -1,6 +1,7 @@
 
 import { QuestLevel, QuestLevelRaw } from '../const/quest-level';
 import { QuestType, QuestTypeTranslate } from '../const/quest-type';
+import { DateRaw, Date } from '../const/date';
 
 export const capitalizeFirstLetter = (value: string) => value.charAt(0).toUpperCase().concat(value.slice(1));
 
@@ -33,4 +34,13 @@ export const translateType = (type: string) => {
     default:
       return QuestTypeTranslate.All;
   }
+};
+
+
+export const translateDate = (date: DateRaw) => {
+  if (date === DateRaw.TODAY) {
+    return Date.TODAY;
+  }
+
+  return Date.TOMORROW;
 };

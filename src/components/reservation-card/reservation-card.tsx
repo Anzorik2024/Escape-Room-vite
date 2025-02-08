@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { memo } from 'react';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
 
-import { useAppDispatch } from '../../hooks';
-import { displayError } from '../../store/actions';
-import { deleteReservationAction, fetchReservationsAction } from '../../store/api-actions';
-
-import { Reservation } from '../../@types/reservation-types';
-
+import { deleteReservationAction, fetchReservationsAction } from '../../store/thunks/resrvation-process';
+import { Reservation } from '../../types/reservation/reservation-types';
 import { AppRoute } from '../../const/app-route';
+
+import { capitalizeFirstLetter, translateLevel, translateDate } from '../../utils/format';
+import { toast } from 'react-toastify';
 import { WarningMessage } from '../../const/warning-message';
-import { capitalizeFirstLetter, translateDate, translateLevel } from '../../utiles/format';
+// import { WarningMessage } from '../../const/warning-message';
+// import { capitalizeFirstLetter, translateDate, translateLevel } from '../../utiles/format';
 
 type ReservationCardProps = {
   reservation: Reservation;
@@ -25,9 +25,9 @@ function ReservationCard({reservation}: ReservationCardProps): JSX.Element {
     dispatch(deleteReservationAction(id)).unwrap().then(
       () => {
         dispatch(fetchReservationsAction());
-      },
-      () => {
-        dispatch(displayError(WarningMessage.SendError));
+      },)
+      .catch(() => {
+        toast.error(WarningMessage.SendError);
       });
   };
 
@@ -83,4 +83,4 @@ function ReservationCard({reservation}: ReservationCardProps): JSX.Element {
   );
 }
 
-export default memo(ReservationCard);
+export default ReservationCard;

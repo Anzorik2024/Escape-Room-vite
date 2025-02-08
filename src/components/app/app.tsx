@@ -13,6 +13,7 @@ import { getToken } from '../../services/token';
 import { userActions } from '../../store/user-process/user-process';
 import ProtectedRoute from '../protected-route/protected-rout';
 import { ToastContainer, toast} from 'react-toastify';
+import ReservationsPage from '../../pages/reservations-page/reservations-page2';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App(): JSX.Element {
@@ -69,6 +70,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute onlyAuth>
               <LoginPage/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path= {AppRoute.MyQuests}
+          element={
+            <ProtectedRoute>
+              <ReservationsPage/>
             </ProtectedRoute>
           }
         />

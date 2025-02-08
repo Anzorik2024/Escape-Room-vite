@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchReservationsAction } from '../thunks/resrvation-process';
 import { ReservationProcess } from '../../types/reservation/reservation-types';
-
-// import { NameSpace } from '../../const/name-space';
+import { deleteReservationAction } from '../thunks/resrvation-process';
 
 
 const initialState: ReservationProcess = {
   reservations: [],
-  isReservationsLoading: false
+  isReservationsLoading: false,
+  isReservationsDeleteLoading: false,
 };
 
 export const reservationProcess = createSlice({
@@ -25,9 +25,23 @@ export const reservationProcess = createSlice({
       })
       .addCase(fetchReservationsAction.rejected, (state) => {
         state.isReservationsLoading = false;
+      })
+      .addCase(deleteReservationAction.fulfilled, (state) => {
+        state.isReservationsDeleteLoading = false;
+      })
+      .addCase(deleteReservationAction.pending, (state) => {
+        state.isReservationsDeleteLoading = false;
+      })
+      .addCase(deleteReservationAction.rejected, (state) => {
+        state.isReservationsDeleteLoading = false;
       });
   }
 });
 
+const reservationProcessAction = {
+  fetchReservationsAction
+};
+
 const reservationProcessReducer = reservationProcess.reducer;
-export {reservationProcessReducer};
+
+export {reservationProcessReducer, reservationProcessAction };

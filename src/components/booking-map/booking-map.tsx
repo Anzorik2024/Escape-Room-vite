@@ -30,6 +30,7 @@ function BookingMap({quest}: bookingMapProps):JSX.Element {
   const { locations } = quest;
 
   const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
+
   const dispatch = useAppDispatch();
 
   const handleMarkerClick = (location: Location) => {

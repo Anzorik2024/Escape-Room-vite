@@ -8,8 +8,9 @@ const getFilterOptionByType = (state: State) => state.filterProcess.typeOption;
 const getFilterOptionByLevel = (state: State) => state.filterProcess.levelOption;
 const getIsLoginLoading = (state: State) => state.userProcess.isLoginLoading;
 const getAuthorizationStatus = (state: State) => state.userProcess.authorizationStatus;
-//const getSelectedQuest = (state:State) => state.questsProcess.selectedQuest;
 const getSelectedLocation = (state: State) => state.bookingProcess.selectedLocation;
+const isReservationsLoading = (state: State) => state.reservationProcess.isReservationsLoading;
+const getAllReservations = (state: State) => state.reservationProcess.reservations;
 
 export {
   selectMainQuest,
@@ -19,6 +20,8 @@ export {
   getFilterOptionByLevel,
   getIsLoginLoading,
   getAuthorizationStatus,
-  getSelectedLocation
+  getSelectedLocation,
+  isReservationsLoading,
+  getAllReservations
 };
 

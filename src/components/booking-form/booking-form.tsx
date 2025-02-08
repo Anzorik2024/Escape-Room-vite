@@ -95,7 +95,7 @@ function BookingForm({quest, peopleMinMax}: bookingFormProps):JSX.Element {
         () => {
           reset();
 
-          navigate(AppRoute.MainPage);
+          navigate(AppRoute.MyQuests);
 
           dispatch(fetchReservationsAction());
         }).catch(() => {

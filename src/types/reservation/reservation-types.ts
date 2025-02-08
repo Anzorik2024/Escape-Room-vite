@@ -28,6 +28,7 @@ export type Reservation = {
 export type ReservationProcess = {
   reservations: ReservationsData;
   isReservationsLoading: boolean;
+  isReservationsDeleteLoading: boolean;
 }
 
 

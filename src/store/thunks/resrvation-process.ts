@@ -21,7 +21,6 @@ undefined,
   }
 );
 
-
 export const sendBookingInfoAction = createAsyncThunk<
   void,
   BookingInfo,
@@ -37,11 +36,16 @@ export const sendBookingInfoAction = createAsyncThunk<
     }
   );
 
-//   interface PostCommentProps {
-//     offerId: number;
-//   }
-
-// export const postCommentBook = createAsyncThunk<void, BookingInfo, {extra: AxiosInstance}>('comments/post', async ({ body, offerId }, { extra : api}) => {
-//   const response = await api.post<BookingInfo>(`${ApiRoutes.Quests}/${offerId}/booking`, body);
-//   return response.data;
-// });
+export const deleteReservationAction = createAsyncThunk<
+  void,
+  number,
+  {
+    dispatch: Dispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+  >('reservation/deleteReservationById',
+    async (id, {extra: api}) => {
+      await api.delete(`${ApiRoutes.Reservation}/${id}`);
+    }
+  );
