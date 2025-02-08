@@ -1,6 +1,6 @@
 import { store } from '../../store';
 import { AuthorizationStatus } from '../../const/authorization-status';
-import { QuestPreview, Quest } from '../quest/quest-types';
+import { QuestPreview, QuestInfo } from '../quest/quest-types';
 
 export type State = ReturnType<typeof store.getState>;
 export type Dispatch = typeof store.dispatch;
@@ -24,6 +24,6 @@ export type UserProcess = {
 
 export type QuestsProcess = {
   quests: QuestPreview[];
-  selectedQuest: Quest;
+  selectedQuest: QuestInfo;
   isQuestsLoading: boolean;
 };

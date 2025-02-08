@@ -9,7 +9,7 @@ const initialState: UserProcess = {
   isLoginLoading: false
 };
 
-export const userProcess = createSlice({
+const userProcess = createSlice({
   name: 'UserProcess',
   initialState,
   reducers: {},

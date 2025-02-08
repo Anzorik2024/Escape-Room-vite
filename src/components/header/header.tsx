@@ -4,6 +4,7 @@ import { AuthorizationStatus } from '../../const/authorization-status';
 import HeaderAuth from './header-auth';
 import HeaderNoAuth from './header-no-auth';
 
+
 function Header(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const checkUser = authorizationStatus === AuthorizationStatus.Auth;

@@ -31,3 +31,10 @@ type TimeSlot = {
   time: string;
   isAvailable: boolean;
 }
+
+
+export type Location = {
+  id: number;
+  address: string;
+  coords: Coordinates;
+}

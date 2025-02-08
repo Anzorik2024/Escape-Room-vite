@@ -1,4 +1,4 @@
-import { Quest, QuestPreview } from '../../types/quest/quest-types';
+import { QuestInfo, QuestPreview } from '../../types/quest/quest-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { Dispatch, State } from '../../types/state/state';
@@ -6,7 +6,7 @@ import { ApiRoutes } from '../../const/api-routes';
 
 
 export const fetchQuestByIdAction = createAsyncThunk<
-Quest,
+QuestInfo,
 number,
 {
   dispatch: Dispatch;
@@ -15,7 +15,7 @@ number,
 }
 >('booking/fetchQuestBookingInfoById',
   async (id, { extra: api}) => {
-    const { data } = await api.get<Quest>(`${ApiRoutes.Quests}/${id}/booking`);
+    const { data } = await api.get<QuestInfo>(`${ApiRoutes.Quests}/${id}/booking`);
 
     return data;
   }

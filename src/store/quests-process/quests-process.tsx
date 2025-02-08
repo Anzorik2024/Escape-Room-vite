@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Quest } from '../../types/quest/quest-types';
+import { QuestInfo } from '../../types/quest/quest-types';
 import { QuestsProcess } from '../../types/state/state';
 import { fetchQuestByIdAction, fetchQuestPreviewsAction } from '../thunks/quests-process';
 
 const initialState: QuestsProcess = {
   quests: [],
-  selectedQuest: {} as Quest,
+  selectedQuest: {} as QuestInfo,
   isQuestsLoading: false
 };
 

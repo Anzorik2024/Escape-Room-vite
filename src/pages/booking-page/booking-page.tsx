@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import { useAppSelector } from '../../hooks/use-app-selector';
-import { getSelectedQuest } from '../../store/selectors';
-import { Quest } from '../../types/quest/quest-types';
+import { selectQuestOne } from '../../store/selectors';
+import { QuestInfo} from '../../types/quest/quest-types';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { questsActions } from '../../store/quests-process/quests-process';
 import { toast } from 'react-toastify';
 import Spiner from '../../components/spiner/spiner';
+import Header from '../../components/header/header';
+import BackgroundPictureEmpty from '../../components/background-picture-empty/background-picture-empty';
+import BookingMap from '../../components/booking-map/booking-map';
 
 
 function BookingPage():JSX.Element {
 
-  const selectedQuest = useAppSelector(getSelectedQuest);
-  const {peopleMinMax} = selectedQuest;
-  const [bookedQuest, setBookedQuest] = useState<Quest|null>(null);
+  const questOne = useAppSelector(selectQuestOne);
+  //const {peopleMinMax} = selectedQuest;
+  const [bookedQuest, setBookedQuest] = useState<QuestInfo|null>(null);
+
 
   const {fetchQuestByIdAction} = useActionCreators(questsActions);
 
@@ -33,13 +37,29 @@ function BookingPage():JSX.Element {
 
   }, [ questId,fetchQuestByIdAction]);
 
-  //console.log(bookedQuest);
   if (!bookedQuest) {
     return <Spiner />;
   }
 
   return (
-    <div></div>
+    <div className="wrapper">
+      <Header />
+      <main className="page-content decorated-page">
+        <BackgroundPictureEmpty/>
+        <div className="container container--size-s">
+          <div className="page-content__title-wrapper">
+            <h1 className="subtitle subtitle--size-l page-content__subtitle">
+            Бронирование квеста
+            </h1>
+            <p className="title title--size-m title--uppercase page-content__title">
+              {questOne ? questOne.title : ''}
+            </p>
+          </div>
+          <BookingMap quest={bookedQuest}/>
+        </div>
+
+      </main>
+    </div>
   );
 
 }
