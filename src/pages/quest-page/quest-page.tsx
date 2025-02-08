@@ -4,7 +4,7 @@ import { questAction } from '../../store/main-slice/main-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectQuestStatus, selectQuestOne } from '../../store/selectors';
-import { RequestStatus } from '../../const';
+import { RequestStatus } from '../../const/request-status';
 import Spiner from '../../components/spiner/spiner';
 import Page404 from '../page404/page404';
 import Header from '../../components/header/header';

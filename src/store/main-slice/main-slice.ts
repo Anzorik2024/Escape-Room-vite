@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { questOffers, fetchQuest } from '../thunks/main';
-import { RequestStatus } from '../../const';
+import { RequestStatus } from '../../const/request-status';
 import { QuestPreview } from '../../types/quest/quest-types';
 import { QuestAllSample } from '../../types/quest/quest';
 
