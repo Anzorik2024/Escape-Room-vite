@@ -6,11 +6,10 @@ import HeaderNavigation from './header-navigation';
 
 type HeaderAuthProps = {
   user: boolean;
-  booking?:boolean;
 }
 
 
-function HeaderAuth({user, booking} : HeaderAuthProps): JSX.Element {
+function HeaderAuth({user} : HeaderAuthProps): JSX.Element {
 
   const {logout} = useActionCreators(userActions);
 
